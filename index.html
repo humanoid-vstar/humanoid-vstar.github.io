@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Towards Spatial Supersensing in Video</title>
+        <title>Humanoid Visual Search in the Wild</title>
         <link rel="icon" type="image/x-icon" href="figs/header.png">
 
         <meta charset="utf-8">
@@ -107,32 +107,33 @@
         <div class="header-wrapper">
             <div class="header-container" id="header-container">
                 <div class="header-content">
-                    <h1 style="margin-top: 0px"><i>Cambrian-S</i></h1>
-                    <h2>Towards Spatial Supersensing in Video</h2>
+                    <h1 style="margin-top: 0px"><i>Thinking in 360°</i></h1>
+                    <h2>Humanoid Visual Search in the Wild</h2>
 
                     <div class="icon-container">
                         <div class="icon-item">
                             <img src="./static/img/icons/positioning.png" alt="Visual Representation Icon">
-                            <div><strong>Position</strong>: We argue that advancing toward true multimodal intelligence requires a shift from language-centric perception toward spatial supersensing: the capacity not only to see, but also to construct, update and predict with an implicit 3D world model from continual sensory experience.</div>
+                            <div><strong>Position</strong>: Humans rely on the synergistic control of head (cephalomotor) and eye (oculomotor) to efficiently search for visual information in 360°. However, prior approaches to visual search are limited to a static image, neglecting the physical embodiment and its interaction with the 3D world.  We propose <strong>Humanoid Visual Search</strong> where a humanoid agent actively rotates its head to search for <strong>objects</strong> or <strong>paths</strong> in an immersive world represented by a 360° panoramic image. </div>
                         </div>
                         <div class="icon-item">
                             <img src="./static/img/icons/eval.svg" alt="Connector Design Icon">
-                            <div><strong>Benchmark</strong>: We re-examine existing benchmarks through the lens of our supersensing hierarchy and design a two-part benchmark to better probe spatial supersensing.</div>
+                            <div><strong>Benchmark</strong>: To study visual
+                                search in visually-crowded real-world scenarios, we build <em><strong>H* Bench</strong></em>, a new benchmark that moves beyond household scenes to challenging in-the-wild scenes that necessitate advanced visual-spatial reasoning capabilities.</div>
                         </div>
                         <div class="icon-item">
                             <img src="./static/img/icons/data_v2.svg" alt="Speech Logo" class="icon">
-                            <div><strong>Dataset</strong>: We investigate whether spatial supersensing is simply a data problem, and curate a large-scale spatially focused dataset VSI-590K to push the limit under existing paradigm.</div>
+                            <div><strong>Dataset</strong>: We collect and label approximately 3,000 task-panorama instances, with a total search episodes of 12,000 samples. We split 4,000 samples for benchmarking and label 2,000 samples with CoT to build SFT dataset. The remained samples are used for RL post-training in our work.</div>
                         </div>
                         <div class="icon-item">
                             <img src="./static/img/icons/nn_model.svg" alt="Vision Logo" class="icon">
-                            <div><strong>Model</strong>: We develop Cambrian-S, a family of spatially-grounded models with leading spatial sensing performance and competitive general capabilities.</div>
+                            <div><strong>Model</strong>: We build HVS-3B by applying cold-start SFT and GRPO to Qwen2.5-VL-3B-Instruct, increasing its success rate by over <strong>threefold</strong> for both object search (14.83% → 47.38%) and path search (6.44% → 24.94%).</div>
                         </div>
-                        <div class="icon-item">
+                        <!-- <div class="icon-item">
                             <img src="./static/img/icons/visual.svg" alt="Vision Logo" class="icon">
                             <div><strong>Predictive Sensing</strong>: We prototype predictive sensing, using latent frame prediction to build MLLM's internal world model, and measuring surprise to handle unbounded visual streams.</div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="button-container">
+                    <!-- <div class="button-container">
                         <a href="https://arxiv.org/abs/2511.04670" class="button">
                             <span class="icon is-small">
                                 <i class="ai ai-arxiv"></i>
@@ -163,7 +164,7 @@
                             </span>
                             <span>Benchmark</span>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="header-image">
                     <img src="figs/header_fg.png" class="header-hero-image" alt="Cambrian-era spatial intelligence" draggable="false" loading="eager" fetchpriority="high" decoding="async">
@@ -175,33 +176,34 @@
                 <div class="byline-container">
                     <div class="authors" style="text-align: center; margin-bottom: 1rem;">
                         <div style="margin-bottom: 0.5rem;">
-                            <a href="https://github.com/vealocia" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Shusheng Yang</span></a><sup>1*</sup>,
-                            <a href="https://jihanyang.github.io/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Jihan Yang</span></a><sup>1*</sup>,
-                            <a href="https://pinzhihuang.github.io/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Pinzhi Huang</span></a><sup>1&dagger;</sup>,
-                            <a href="https://ellisbrown.github.io/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Ellis Brown</span></a><sup>1&dagger;</sup>,
-                            <a href="https://redagavin.github.io/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Zihao Yang</span></a><sup>1</sup>,
-                        </div>
-                        <div style="margin-bottom: 0.5rem;">
-                            <a href="https://github.com/czyuyue" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Yue Yu</span></a><sup>1</sup>,
-                            <a href="https://tsb0601.github.io/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Shengbang Tong</span></a><sup>1</sup>,
-                            <a href="#" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Zihan Zheng</span></a><sup>1</sup>,
-                            <a href="https://www.yfxu.com/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Yifan Xu</span></a><sup>1</sup>,
-                            <a href="https://github.com/wang-muhan" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Muhan Wang</span></a><sup>1</sup>,
-                            <a href="https://daohanlu.github.io/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Daohan Lu</span></a><sup>1</sup>,
+                            <span class="author-name">Heyang Yu</span><sup>1*</sup>,
+                            <span class="author-name">Yinan Han</span><sup>4*</sup>,
+                            <span class="author-name">Xiangyu Zhang</span><sup>2</sup>,
+                            <span class="author-name">Baiqiao Yin</span><sup>1</sup>,
+                            <span class="author-name">Bowen Chang</span><sup>1</sup>,
+                            <span class="author-name">Xiangyu Han</span><sup>1</sup>,
+                            <span class="author-name">Xinhao Liu</span><sup>1</sup>,
+                            <span class="author-name">Jing Zhang</span><sup>1</sup>
                         </div>
                         <div>
-                            <a href="https://cs.nyu.edu/~fergus/pmwiki/pmwiki.php" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Rob Fergus</span></a><sup>1</sup>,
-                            <a href="http://yann.lecun.com/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Yann LeCun</span></a><sup>1</sup>,
-                            <a href="https://profiles.stanford.edu/fei-fei-li" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Li Fei-Fei</span></a><sup>2</sup>,
-                            <a href="https://www.sainingxie.com/" target="_blank" style="color: inherit; text-decoration: none !important;"><span class="author-name">Saining Xie</span></a><sup>1</sup>
+                            <span class="author-name">Marco Pavone</span><sup>3,5</sup>,
+                            <span class="author-name">Chen Feng</span><sup>1</sup>,
+                            <span class="author-name">Saining Xie</span><sup>1&dagger;</sup>,
+                            <span class="author-name">Yiming Li</span><sup>1,3&dagger;</sup>
                         </div>
                     </div>
-                    <div style="text-align: center; font-size: 1.1rem; color: #666;"><span><sup>*</sup>Equal Contribution</span> &nbsp; <span><sup>&dagger;</sup>Core Contributor</span></div>
-                    <div class="affiliations" style="text-align: center; font-size: 1.1rem; color: #666;"><span><sup>1</sup>New York University</span> &nbsp; <span><sup>2</sup>Stanford University</span></div>
+                    <div style="text-align: center; font-size: 1.1rem; color: #666;"><span><sup>*</sup>Equal contribution</span> &nbsp; <span><sup>&dagger;</sup>Corresponding author</span></div>
+                    <div class="affiliations" style="text-align: center; font-size: 1.1rem; color: #666;">
+                        <span><sup>1</sup>New York University</span> &nbsp;
+                        <span><sup>2</sup>UC Berkeley</span> &nbsp;
+                        <span><sup>3</sup>NVIDIA</span> &nbsp;
+                        <span><sup>4</sup>TU Darmstadt</span> &nbsp;
+                        <span><sup>5</sup>Stanford University</span>
+                    </div>
                 </div>
             </div>
 
-            <div style="max-width: 100%; margin: 30px auto; width: 100%;">
+            <!-- <div style="max-width: 100%; margin: 30px auto; width: 100%;">
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
                     <iframe 
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
@@ -212,9 +214,9 @@
                         allowfullscreen>
                     </iframe>
                 </div>
-            </div>
+            </div> -->
             
-            <h1 class="text">Overview</h1>
+            <h1 class="text">Introduction</h1>
             <p class="text">
                 A video is not just a sequence of frames in isolation. It is a continual, high-bandwidth projection of a hidden, evolving 3D world onto pixels. Although multimodal large language models (MLLMs) have advanced rapidly by pairing strong image encoders with language models, most video extensions remain fundamentally constrained. They still treat video as sparse frames, underrepresent spatial structure and dynamics, and lean heavily on textual recall, thus overlooking what makes the video modality uniquely powerful. 
             </p>
@@ -225,9 +227,9 @@
             <section id="teaser" style="margin-top: 2rem; margin-bottom: 4rem;">
                 <d-figure>
                     <figure>
-                        <img src="figs/teaser_v10.png" alt="Spatial supersensing teaser" class="pdf-figure" style="width: auto; height: auto; border: none;" data-zoomable="" draggable="false">
+                        <img src="figs/teaserv4.png" alt="Spatial supersensing teaser" class="pdf-figure" style="width: auto; height: auto; border: none;" data-zoomable="" draggable="false">
                         <figcaption>
-                            <strong>Figure:</strong> From pixels to predictive mind. We look beyond linguistic-only understanding to envision multimodal intelligence that sees, remembers, and reasons as part of a continuous, lived world.
+                            <strong>Figure:</strong> <strong>We pose a fundamental question:</strong>  <i>can an AI agent actively search for objects or paths in a 3D world like a human, rather than just passively describe what it sees?</i> We transition agents from passive captioners to active searchers, moving them from constrained household scenes into the rich complexity of the wild. A key enabler is our scalable paradigm where a single 360° panorama closes the perception-action loop for head rotation, freeing active embodied reasoning in real life from hardware constraints.
                         </figcaption>
                     </figure>
                 </d-figure>
