@@ -235,7 +235,7 @@
                 </d-figure>
             </section>
         
-            <ul class="text">
+            <!-- <ul class="text">
                 <li>
                     <strong><span style="color: gray;">(Linguistic-only understanding):</span></strong> no sensory capabilities; reasoning confined to text and symbols. Current MLLMs have progressed beyond this stage, yet still retain traces of its bias.
                 </li>
@@ -251,41 +251,31 @@
                 <li>
                     <strong>Predictive world modeling:</strong> the brain makes <em>unconscious inference</em> by predicting latent world states based on prior expectations. When these predictions are violated, surprise guides attention, memory, and learning. However, current multimodal systems lack an internal model that anticipates future states and uses surprise to organize perception for memory and decision making.
                 </li>
-            </ul>
+            </ul> -->
 
 
             <section id="hierarchy-and-benchmarks">
-                <h1 class="text">Deconstructing Existing Video Benchmarks</h1>
-                <p class="text">Recent advances in MLLM have led to a surge in video QA benchmarks. However, a critical question remains: to what extent do existing video benchmarks truly examine visual sensing capabilities rather than simply testing language priors? We establish several experimental conditions for feeding video input to a Cambrian-1 model:</p> 
+                <h1 class="text">Humanoid Visual Search</h1>
                 
-                <p class="text">
-                    <strong>Diagnostic Setup.</strong> We establish five experimental conditions to isolate the contributions of different information sources. We provide the model with either a <strong>Single Frame</strong> (the middle frame), <strong>Multiple Frames</strong> (32 uniformly sampled frames), or textual <strong>Frame Captions</strong> generated from those 32 frames. We compare these against two baselines: a <strong>Blind Test</strong>, where the model only receives the question, and <strong>Chance Acc</strong>, which represents random guessing. By analyzing performance differences between these conditions—such as <code>diff(Multiple, Single)</code> to assess temporal cues or <code>diff(Multiple, Captions)</code> to control for textual solvability—we can create a fine-grained profile of each benchmark's characteristics.
-                </p>
+                <p class="text">Humanoid visual search is modeled as a multimodal reasoning problem in which an MLLM-driven agent, equipped with a narrow field of view, must actively rotate its head to gather visual evidence and identify the optimal final viewing direction for object or path search. We formulate the environment as a 360° panorama from which perspective observations are sampled, and define an action space consisting of head-rotation primitives and a submission action that commits the final estimate.</p>
                 
                 <d-figure>
                     <figure style="position: relative;">
-                        <img src="figs/benchmark_analysis_sy_v4.png" alt="Benchmark diagnostic study" class="pdf-figure" style="width: 100%; height: auto; border: none;" data-zoomable="" draggable="false">
-                        <div style="position: absolute; bottom: 50px; right: 10px; background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 5px; font-size: 1.0em; line-height: 1.4; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid black;">
-                            <strong>Legend:</strong><br>
-                            <strong>MME:</strong> VideoMME<br>
-                            <strong>ES:</strong> EgoSchema<br>
-                            <strong>VM:</strong> VideoMMMU<br>
-                            <strong>LV:</strong> LongVideoBench<br>
-                            <strong>TM:</strong> Tomato<br>
-                            <strong>MV:</strong> MVBench<br>
-                            <strong>PT:</strong> Perception Test<br>
-                            <strong>HV:</strong> HourVideo<br>
-                            <strong>VSI:</strong> VSIBench<br>
-                            <strong>VSR:</strong> VSI-SUPER Recall<br>
-                            <strong>VSC:</strong> VSI-SUPER Count
-                        </div>
+                        <img src="figs/training_pipeline.png" alt="Training pipeline" class="pdf-figure" style="width: 100%; height: auto; border: none;" data-zoomable="" draggable="false">
                         <figcaption >
-                            <strong>Figure:</strong> Comprehensive analysis comparing visual, caption-only, and blind settings across existing video benchmarks.
+                            <strong>Figure:</strong> Pipeline Illustration. Stage 1 (SFT) provides the foundational ability to map perspective images to plausible actions (e.g.,turning around upon seeing nothing). Stage 2 (RL) refines this into a strategic policy: the model learns to explore until it acquires a view with sufficient evidence (e.g., spotting the gate sign), at which point it confidently submits the final estimate.
                         </figcaption>
                     </figure>
-                </d-figure>
+                </d-figure> 
                 
-                <div style="margin: 2rem auto; max-width: auto; padding: 1.5rem; background-color: #f5f5f5; border: 2px solid #008080; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <p class="text">Because pretrained MLLMs lack the spatial commonsense and embodied planning abilities required for this task, we introduce a two-stage post-training pipeline. First, supervised fine-tuning on curated multi-turn trajectories instills structured reasoning and tool-use behaviors. Second, multi-turn reinforcement learning via Group Relative Policy Optimization further refines long-horizon decision making, enabling the model to learn strategic exploration policies that generalize beyond imitation learning. This framework yields an effective and principled approach for adapting MLLMs into robust humanoid visual search agents.</p> 
+                
+                <!-- <p class="text">
+                    <strong>Diagnostic Setup.</strong> We establish five experimental conditions to isolate the contributions of different information sources. We provide the model with either a <strong>Single Frame</strong> (the middle frame), <strong>Multiple Frames</strong> (32 uniformly sampled frames), or textual <strong>Frame Captions</strong> generated from those 32 frames. We compare these against two baselines: a <strong>Blind Test</strong>, where the model only receives the question, and <strong>Chance Acc</strong>, which represents random guessing. By analyzing performance differences between these conditions—such as <code>diff(Multiple, Single)</code> to assess temporal cues or <code>diff(Multiple, Captions)</code> to control for textual solvability—we can create a fine-grained profile of each benchmark's characteristics.
+                </p> -->
+                
+                
+                <!-- <div style="margin: 2rem auto; max-width: auto; padding: 1.5rem; background-color: #f5f5f5; border: 2px solid #008080; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                     <p style="margin: 0; color: #000; font-size: 1.1em; line-height: 1.6;">
                         <i class="fas fa-bookmark" style="color: #000; margin-right: 10px;"></i>
                         Existing benchmarks overwhelmingly focus on linguistic understanding and semantic perception while neglecting the more advanced spatial and temporal reasoning required for supersensing.
@@ -303,7 +293,7 @@
                 
                 <p class="text">
                     <strong>Remark.</strong> We hope to emphasize the inherent challenges in benchmarking and the impracticality of creating a single, all-encompassing benchmark to evaluate every capability. For example, reliance on language priors should not be viewed merely as a drawback, as access to rich world knowledge and its effective retrieval is undoubtedly beneficial in many scenarios. We argue that <strong>video benchmarks should not be treated as measuring a single, uniform notion of "video understanding." Instead, their design and evaluation should be grounded in the specific capabilities they aim to assess.</strong> The preceding analyses are therefore intended to guide the development of tasks that more effectively drive progress towards <em>spatial supersensing</em>, which will be the central focus of the rest of the paper.
-                </p>
+                </p> -->
                 
                 <h1 class="text">VSI-SUPER: Towards Benchmarking Spatial Supersensing in Multimodal LLMs</h1>
                 
