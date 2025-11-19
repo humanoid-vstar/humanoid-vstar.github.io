@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <title>Humanoid Visual Search in the Wild</title>
-        <link rel="icon" type="image/x-icon" href="figs/header.png">
+        <link rel="icon" type="image/x-icon" href="figs/header_360.png">
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
         <script src="./static/js/image_interact.js"></script>
         <script src="./static/js/switch_videos.js"></script>
 
-        <link rel="preload" as="image" href="figs/new_header.png" fetchpriority="high">
+        <link rel="preload" as="image" href="figs/header_360.png" fetchpriority="high">
         <link rel="stylesheet" href="./static/css/style.css">
         <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
@@ -167,7 +167,7 @@
                     </div> -->
                 </div>
                 <div class="header-image">
-                    <img src="figs/header_fg.png" class="header-hero-image" alt="Cambrian-era spatial intelligence" draggable="false" loading="eager" fetchpriority="high" decoding="async">
+                    <img src="figs/header_360.png" class="header-hero-image" alt="humanoid_visual_search" draggable="false" loading="eager" fetchpriority="high" decoding="async">
                 </div>
             </div>
         </div>
@@ -218,11 +218,16 @@
             
             <h1 class="text">Introduction</h1>
             <p class="text">
-                A video is not just a sequence of frames in isolation. It is a continual, high-bandwidth projection of a hidden, evolving 3D world onto pixels. Although multimodal large language models (MLLMs) have advanced rapidly by pairing strong image encoders with language models, most video extensions remain fundamentally constrained. They still treat video as sparse frames, underrepresent spatial structure and dynamics, and lean heavily on textual recall, thus overlooking what makes the video modality uniquely powerful. 
+                The human visual system is highly efficient, capturing sharp detail only at the fovea while leaving other regions blurred or unseen. Despite the sensor limitations, humans efficiently perform visual search tasks in 360° (e.g., locating the next exit in a crowded subway station) by rapidly executing saccades and deliberately reorienting their head, minimizing sensory redundancy and computational cost.
             </p>
             <p class="text" >
-                We argue that advancing toward true multimodal intelligence requires a shift from language-centric perception toward spatial <em>supersensing</em>: the capacity not only to see, but also to construct, update, and predict an implicit model of the 3-D world from continual sensory experience. We define spatial supersensing as a hierarchy of capabilities:
-            </p>
+                We introduce <strong><em>humanoid visual search (HVS)</em></strong>, where agents combine reasoning with head movements in 360° environments. 
+            </p> 
+            <ul class="text"> 
+                <li><strong>(1) HVS is interactive</strong>: the agent starts with a narrow field of view and updates perception through head rotations.</li>
+                <li><strong>(2) HVS is embodied</strong>: visual reasoning is tightly coupled with action, driven by two tasks: <strong>(a) humanoid object search (HOS)</strong>—foveating targets for manipulation, and <strong>(b) humanoid path search (HPS)</strong>—orienting toward navigable paths.</li>
+            </ul>
+            
 
             <section id="teaser" style="margin-top: 2rem; margin-bottom: 4rem;">
                 <d-figure>
