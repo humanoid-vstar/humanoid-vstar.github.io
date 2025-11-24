@@ -113,58 +113,58 @@
                     <div class="icon-container">
                         <div class="icon-item">
                             <img src="./static/img/icons/positioning.png" alt="Visual Representation Icon">
-                            <div><strong>Position</strong>: Humans rely on the synergistic control of head (cephalomotor) and eye (oculomotor) to efficiently search for visual information in 360°. However, prior approaches to visual search are limited to a static image, neglecting the physical embodiment and its interaction with the 3D world.  We propose <strong>Humanoid Visual Search</strong> where a humanoid agent actively rotates its head to search for <strong>objects</strong> or <strong>paths</strong> in an immersive world represented by a 360° panoramic image. </div>
+                            <div><strong>Position</strong>: We argue that achieving human-level visual search requires a shift from disembodied 2D visual reasoning to embodied active reasoning in 360°: the ability not only to identify relevant information within a single view, but to strategically control the viewpoint to construct a visual chain-of-thought, perform situational reasoning, and generate embodied plans.</div>
                         </div>
                         <div class="icon-item">
                             <img src="./static/img/icons/eval.svg" alt="Connector Design Icon">
-                            <div><strong>Benchmark</strong>: To study visual
-                                search in visually-crowded real-world scenarios, we build <em><strong>H* Bench</strong></em>, a new benchmark that moves beyond household scenes to challenging in-the-wild scenes that necessitate advanced visual-spatial reasoning capabilities.</div>
+                            <div><strong>Benchmark</strong>: We build H* Bench, a new benchmark that moves beyond constrained household scenes to challenging in-the-wild environments that necessitate advanced visual-spatial reasoning capabilities, such as transportation hubs, large-scale retail spaces, urban streets, and public institutions.</div>
                         </div>
                         <div class="icon-item">
                             <img src="./static/img/icons/data_v2.svg" alt="Speech Logo" class="icon">
-                            <div><strong>Dataset</strong>: We collect and label approximately 3,000 task-panorama instances, with a total search episodes of 12,000 samples. We split 4,000 samples for benchmarking and label 2,000 samples with CoT to build SFT dataset. The remained samples are used for RL post-training in our work.</div>
+                            <div><strong>Dataset</strong>: We argue that human reasoning is intermittent and invoked only at critical decision points. Focusing on these critical points enables us to build a closed-loop search environment from a single in-the-wild 360° panorama, bypassing the need for 3D simulation or physical hardware and yielding a scalable framework for embodied visual search.</div>
                         </div>
                         <div class="icon-item">
                             <img src="./static/img/icons/nn_model.svg" alt="Vision Logo" class="icon">
-                            <div><strong>Model</strong>: We build HVS-3B by applying cold-start SFT and GRPO to Qwen2.5-VL-3B-Instruct, increasing its success rate by over <strong>threefold</strong> for both object search (14.83% → 47.38%) and path search (6.44% → 24.94%).</div>
+                            <div><strong>Model</strong>: We build HVS-3B by applying cold-start SFT and GRPO to Qwen2.5-VL-3B-Instruct, increasing its success rate by more than threefold for both object search (14.83% → 47.38%) and path search (6.44% → 24.94%). The lower ceiling of path search reveals its inherent difficulty due to the need for sophisticated physical, spatial, and social commonsense.
+                            </div>
                         </div>
-                        <!-- <div class="icon-item">
+                        <div class="icon-item">
                             <img src="./static/img/icons/visual.svg" alt="Vision Logo" class="icon">
-                            <div><strong>Predictive Sensing</strong>: We prototype predictive sensing, using latent frame prediction to build MLLM's internal world model, and measuring surprise to handle unbounded visual streams.</div>
-                        </div> -->
+                            <div><strong>Humanoid Visual Search</strong>: We prototype humanoid visual search, where head and eyes operate as a nested, synergistic system— the head explore unseen regions while the eyes exploit already visible content. This forms a core perceptual competence for future humanoid robots that must reason and act across diverse human-made environments.</div>
+                        </div>
                     </div>
-                    <!-- <div class="button-container">
-                        <a href="https://arxiv.org/abs/2511.04670" class="button">
+                    <div class="button-container">
+                        <a href="https://arxiv.org/" class="button">
                             <span class="icon is-small">
                                 <i class="ai ai-arxiv"></i>
                             </span>
                             <span>arXiv</span>
                         </a>
-                        <a href="https://github.com/cambrian-mllm/cambrian-s" class="button" target="_blank">
+                        <a href="https://github.com/humanoid-vstar/hstar" class="button" target="_blank">
                             <span class="icon is-small">
                                 <i class="fab fa-github"></i>
                             </span>
                             <span>Code</span>
                         </a>
-                        <a href="https://huggingface.co/collections/nyu-visionx/cambrian-s-models" class="button" target="_blank">
+                        <a href="https://huggingface.co/collections/humanoid-vstar/hvs-models" class="button" target="_blank">
                             <span class="icon is-small">
                                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
                             </span>
                             <span>Models</span>
                         </a>
-                        <a href="https://hf.co/datasets/nyu-visionx/vsi-590k" class="button" target="_blank">
+                        <a href="https://huggingface.co/collections/humanoid-vstar/hvs-train-datasets" class="button" target="_blank">
                             <span class="icon is-small">
                                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
                             </span>
                             <span>Data</span>
                         </a>
-                        <a href="https://hf.co/collections/nyu-visionx/vsi-super" class="button" target="_blank">
+                        <a href="https://huggingface.co/datasets/humanoid-vstar/hstar_bench/tree/main" class="button" target="_blank">
                             <span class="icon is-small">
                                 <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face logo" style="height: 1em;">
                             </span>
                             <span>Benchmark</span>
                         </a>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="header-image">
                     <img src="figs/header_360.png" class="header-hero-image" alt="humanoid_visual_search" draggable="false" loading="eager" fetchpriority="high" decoding="async">
